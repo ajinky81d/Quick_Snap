@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Image</title>
+    <style>
+        body {
+            background-color: black; /* Set background color to black */
+            color: white; /* Set text color to white */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align content at the center horizontally */
+            justify-content: center; /* Align content at the center vertically */
+            height: 95vh; /* Set height to 100% of viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        form {
+            margin-top: 20px; /* Add some top margin to the form */
+        }
+        button, .button {
+            background-color: red; /* Example background color for the buttons */
+            color: white; /* Example text color for the buttons */
+            padding: 10px 20px; /* Example padding for the buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, .button:hover {
+            background-color: darkred; /* Example hover color for the buttons */
+        }
+        .button {
+            margin-top: 20px; /* Add some top margin to the back button */
+            text-decoration: none;
+            background-color:black;
+            border: 1px solid white; /* Example border for the back button */
+            border-radius: 5px;
+            padding: 10px 20px; /* Example padding for the back button */
+        }
+        .button:hover {
+            background-color: darkgray; /* Example hover color for the back button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Data</h1>
+    <p>Are you sure you want to delete the Image?</p>
+    
+    <!-- Form for deletion -->
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'data' %}" class="button">Back</a>
+    </form>
+</body>
+</html>
+

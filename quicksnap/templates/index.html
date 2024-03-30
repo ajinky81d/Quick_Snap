@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Snap</title>
+    <style>
+        /* Your existing CSS styles */
+        /* Additional CSS styles */
+        .cover {
+            text-align: center;
+            padding: 50px 20px;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(25px); /* Initially moved down */
+            transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+        }
+
+     
+
+        .inner {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main role="main" class="cover">
+        <h1 class="cover-heading">QUICK SNAP</h1>
+        <p class="lead">WEB PLATFORM FOR STORING IMAGES</p>
+        <p class="lead">
+            <a href="{% url 'signup' %}" class="btn btn-lg btn-secondary">SIGN UP</a>
+        </p>
+    </main>
+
+    <footer class="mastfoot">
+        <div class="inner">
+            <p>Design and Developed by <a href="https://www.linkedin.com/groups/14165025" target='_blank'>J's DJANGO_SERVICES</a> .</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to trigger animation when the elements are in view
+        const cover = document.querySelector('.cover');
+        const footer = document.querySelector('.mastfoot');
+
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function animateCoverAndFooter() {
+            if (isInViewport(cover)) {
+                cover.style.opacity = '1';
+                cover.style.transform = 'translateY(0)';
+            }
+            if (isInViewport(footer)) {
+                footer.style.opacity = '1';
+            }
+        }
+
+        animateCoverAndFooter(); // Check if elements are in view on page load
+        window.addEventListener('scroll', animateCoverAndFooter);
+    </script>
+</body>
+</html>
+
+{% endblock  %}
+

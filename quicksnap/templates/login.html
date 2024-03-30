@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<style>
+    /* Additional styles for the login page */
+    .login-container {
+        max-width: 500px;
+        margin: 15px auto; /* Adjusted margin for better alignment */
+        padding: 20px;
+        background-color: #333; /* Matched background color with base.html */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #fff; /* Changed text color to white for better visibility */
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-form label {
+        margin-bottom: 8px;
+        color: #fff; /* Changed label color to white */
+    }
+
+    .login-form input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f9fa; /* Matched input background color with base.html */
+    }
+
+    button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+    
+</style>
+
+<div class="login-container">
+    <h1>LOGIN</h1>
+    <br>
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">LOGIN</button>
+    </form>
+    <br>
+    <p>Forgot Username or Password? <a href="{% url 'contact' %}">Contact Us</a></p>
+     
+</div>
+{% endblock body %}
+
+

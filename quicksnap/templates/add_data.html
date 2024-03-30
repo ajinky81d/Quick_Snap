@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #333; /* Dark gray */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form label {
+            margin-bottom: 6px; /* Adjusted margin */
+        }
+
+        .login-form input {
+            padding: 6px; /* Adjusted padding */
+            margin-bottom: 8px; /* Adjusted margin */
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #ccc; /* Grey background */
+            color: #000; /* Black text */
+        }
+
+        button, .back-button {
+            padding: 10px; /* Adjusted padding */
+            margin-top: 10px; /* Adjusted margin */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Button width */
+        }
+
+        button:hover, .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+
+    <h2>Add Image</h2>
+    
+    <form method="POST" class="login-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="detail">Title:</label>
+        <input type="text" id="detail" name="detail" required>
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="img" accept="image/*" required>
+        <button type="submit">ADD</button>
+    </form>
+
+    <button class="back-button" onclick="history.go(-1);">Back</button>
+    
+</div>
+
+</body>
+</html>

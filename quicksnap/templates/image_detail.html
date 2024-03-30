@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Details</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+        }
+        .image-container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 60%;
+            height: auto;
+            margin-bottom: 10px; /* Add margin to the bottom of the image */
+        }
+        .download-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0; /* Make the button invisible */
+        }
+        .button-container {
+            position: absolute;
+            top: 10px; /* Adjust top position as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1; /* Ensure the button is above the image */
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        
+       
+
+        @media screen and (max-width: 600px) {
+            .button {
+                display: block;
+                margin-bottom: 10px;
+           
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+    <a href="{% url 'data' %}" class="button">Back</a>
+    <button class="button" onclick="downloadImage()">Download Image</button>
+    <p> {{image_name}} </p>
+    <div class="image-container">
+         
+        <img id="image" src="/static/media/{{ image_name }}" alt="Image">
+        <!-- Hidden button overlaying the image -->
+        <button class="download-overlay" onclick="downloadImage()"></button>
+        
+        
+    </div>
+
+    <script>
+        function downloadImage() {
+            var imageSrc = document.getElementById("image").src;
+            var fileName = imageSrc.substring(imageSrc.lastIndexOf("/") + 1);
+            var downloadLink = document.createElement('a');
+            downloadLink.href = imageSrc;
+            downloadLink.download = fileName;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+</body>
+</html>
+

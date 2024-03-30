@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock title%}
+
+{% block body %} 
+
+<style>
+ 
+    .content {
+        background-color: #    .content {
+            background-color: #f4f4f4; /* Same color as the login container */
+            font-family: 'Arial', sans-serif;
+        }; /* Same color as the login container */
+        font-family: 'Arial', sans-serif;
+    }
+    .form-container {
+        margin-top: 1px;
+        margin-bottom: 50px;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h1 {
+        color: #fff;
+        text-align: center;
+        margin-top:20px;
+        margin-bottom:1px;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .form-container input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .form-container button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <h1>SIGNUP</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10 shadow form-container">
+                <form method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <label for="userid">Userid:</label>
+                    <input type="text" name="userid" required placeholder="Enter userid">
+                    
+         
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" required placeholder="Enter your name">
+                    
+                    
+           
+                    <label for="pass1">Password:</label>
+                    <input type="password" name="pass1" required placeholder="Enter password">
+                    
+                    <label for="pass2">Confirm Password:</label>
+                    <input type="password" name="pass2" required placeholder="Confirm your password">
+                    
+                    <button type="submit">Signup</button>
+                    <br><br>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock body%}
+

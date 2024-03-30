@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}Features{% endblock title %}
+
+{% block body %}
+   
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Snap</title>
+    <style>
+        /* Your existing CSS styles */
+        /* Additional CSS styles */
+        .cover {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .cover-heading {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            margin-top: 2px;
+            color: #fff; /* Blue color */
+        }
+
+        .lead {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .policy {
+            margin-top: 1px;
+            text-align: left;
+            padding: 20px;
+            background-color: none;
+            border-radius: 5px;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Initially moved down */
+            transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+        }
+
+        .policy h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            margin-top:1px;
+            color: #fff; /* Blue color */
+        }
+
+        .policy p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 1px; /* Reduced margin */
+        }
+
+        /* Additional styles for the list */
+        .feature-list {
+            text-align: left;
+            margin-left: 20px;
+            margin-bottom:10px;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Initially moved down */
+            transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+        }
+
+        .feature-list li {
+            margin-bottom: 1px; /* Reduced margin */
+        }
+        .policy h2 {
+            font-size: 2rem;
+            margin-bottom: 10px; /* Adjusted margin */
+            margin-top: 1px; /* Adjusted margin */
+            color: #007bff; /* Blue color */
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-left: 20px;
+            margin-bottom: 5px; /* Reduced margin */
+            margin-top: 0; /* Added to reset top margin */
+        }
+
+        .feature-list li {
+            margin-bottom: 5px; /* Reduced margin */
+            margin-top: 0; /* Added to reset top margin */
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <h1 class="cover-heading">Features</h1>
+        <p class="lead">Quick Snap offers the following features:</p>
+        <ul class="feature-list">
+            <li>No Authentication Required: Start using Quick Snap without any hassle.</li>
+            <li>Easy Image Management: Add,view and download images anytime, anywhere.</li>
+            <li>Contact Support: Need help? Our support team is ready to assist you.</li>
+        </ul>
+    </div>
+
+    <div class="policy">
+        <h2>Policy</h2>
+        <p>Your Data is Protected: We take the security and privacy of your data seriously. Quick Snap employs measures to ensure that your images are safe and protected.</p>
+        <p><h3>Data Deletion</h3> Your uploaded images will be automatically deleted after 60 days. Please make sure to download your images before this period expires.</p>
+    </div>
+
+    <script>
+        // JavaScript to trigger animation with time delay
+        const featureList = document.querySelector('.feature-list');
+        const policy = document.querySelector('.policy');
+
+        function animateFeatures() {
+            setTimeout(() => {
+                featureList.style.opacity = '1';
+                featureList.style.transform = 'translateY(0)';
+            }, 500); // 500ms delay
+        }
+
+        function animatePolicy() {
+            setTimeout(() => {
+                policy.style.opacity = '1';
+                policy.style.transform = 'translateY(0)';
+            }, 1000); // 1000ms delay
+        }
+
+        animateFeatures();
+        animatePolicy();
+    </script>
+</body>
+</html>
+
+
+
+{% endblock body %}
+
+ 

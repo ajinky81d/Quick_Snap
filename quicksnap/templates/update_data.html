@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            max-width: 400px;
+            width: 90%;
+            padding: 20px;
+            background-color: #333; /* Dark gray */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        form p {
+            margin: 10px 0;
+        }
+
+        form label {
+            color: #fff;
+        }
+
+        form input[type="file"] {
+            margin-top: 6px;
+        }
+
+        form button {
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Button width */
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        form .back {
+            display: inline-block;
+            padding: 10px;
+            background-color: #333; /* Dark gray */
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        form .back:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrfmiddlewaretoken" value="TRq9LxVkG0Wjnd513SSuiHQLx2rGOzI4LgpQnLhFZi7b0v10FKSKVI2s10eo5nwr">
+    <p>
+        <label for="id_img">Img:</label>
+        Currently: <a href="/media/wp5_tDOQLVI.jpg">wp5_tDOQLVI.jpg</a><br>
+        Change:
+        <input type="file" name="img" accept="image/*" id="id_img">
+    </p>
+
+    <p>
+        <label for="id_detail">Detail:</label>
+        <input type="text" name="detail" value="detail" maxlength="23" required="" id="id_detail">
+    </p>
+
+    <button type="submit">Save Changes</button>
+    <a href="/data" class="back">Back</a>
+</form>
+
+</body>
+</html>

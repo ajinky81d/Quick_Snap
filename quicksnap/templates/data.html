@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #000;
+        }
+
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background-color: #333; /* Dark gray */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .content h1, .content h2, .content h4 {
+            color: #fff;
+        }
+
+        .content a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #000;
+        }
+
+        .content th, .content td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .content th {
+            background-color: #f2f2f2;
+        }
+
+        .button1{
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 0.1px;
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 200px;
+        }
+        .button1:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        .add-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 3px;
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 156px;
+        }
+
+        .add-button {
+            background-color: #fff;
+            color: #000;
+        }
+        .view-button, .delete-button {
+            
+            text-color: #007bff;
+            
+            padding-bottom: 3px;
+            border-bottom: 2px solid #007bff;
+            transition: all 0.3s ease;
+        }
+        
+        
+
+        @media only screen and (max-width: 600px) {
+            .content {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .button {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    {% if request.user.is_authenticated %} 
+    <p><h4>Username: {{ request.user }}</h4></p>
+    <button type="submit" id="logoutButton" onclick="location.href='{% url 'logout' %}'" class="button1">Logout</button><br><br>
+    {% else %} 
+    <a href="{% url 'login'%}" class="button">Login</a><br><br>
+    {% endif %} 
+
+    <a href="{% url 'add_data' %}" class="add-button">Add Image</a><br><br><br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Detail</th>
+                <th>Image Name</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if images %} 
+            {% for data in images reversed %}
+            <tr>
+                <td>{{ data.date }}</td>
+                <td>{{ data.detail }}</td>
+                <td>{{ data.img.name }}</td>
+                <td>
+                    <a href="{% url 'get_image' data.id %}"  class="button view-button">View</a></td>
+                <td>  <a href="{% url 'delete_data' data.id %}" class="button delete-button">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="4">No images found</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
